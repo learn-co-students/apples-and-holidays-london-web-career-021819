@@ -65,10 +65,12 @@ def all_supplies_in_holidays(holiday_hash)
   # etc.
   holiday_hash.each do |season, details|
     puts "#{season.capitalize}:"
+    # nest iteration within iteration
     details.each do |hol, stuff|
-      holiday = hol.to_s.split("_")
-                .collect { |x| x.capitalize! }
-                .join(" ")
+      # can chain lots of operations instead of initialising multiple variables
+      holiday = hol.to_s.split("_") #string to array
+                .collect { |x| x.capitalize! } # iterate over array
+                .join(" ") # array to string
       puts "  #{holiday}: #{stuff.join(", ")}"
     end
   end
@@ -76,6 +78,14 @@ end
 
 def all_holidays_with_bbq(holiday_hash)
   # return an array of holiday names (as symbols) where supply lists
-  # include the string "BBQ"
-
+  yes = []
+  holiday_hash.each do |season, celebration|
+    #...to access the hash with holiday names(celebration)
+    celebration.each do |k, v|
+      if v.include?("BBQ") # include?, not == because looking within an array
+        yes << k # k is already a symbol so leave it be
+      end
+    end
+  end
+  yes
 end
