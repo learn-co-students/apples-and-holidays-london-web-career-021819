@@ -10,8 +10,7 @@
 ### Instructions
 
 You have a bunch of decorations for various holidays organized by season.
-
-```ruby
+ruby
 holiday_supplies = {
   :winter => {
     :christmas => ["Lights", "Wreath"],
